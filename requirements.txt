@@ -1,7 +1,5 @@
 Django>=4.2     # Latest stable version of Django
 gunicorn        # Production WSGI server
-psycopg2        # PostgreSQL adapter (if using PostgreSQL)
-mysqlclient     # MySQL adapter (if using MySQL)
 Pillow          # Image processing (for dish images)
 django-crispy-forms  # To enhance form styling
 django-bootstrap5    # Bootstrap integration
