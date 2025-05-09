@@ -25,7 +25,10 @@ SECRET_KEY = 'django-insecure-68q293^wf+15-qkl!xf4sa))8yedv@98z0l5)+)c573l^q!m#1
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-CSRF_TRUSTED_ORIGINS = ['http://localhost', 'http://127.0.0.1', 'https://flask-mvp.jmtqu4.easypanel.host/']
+CSRF_TRUSTED_ORIGINS = [
+    'https://flask-mvp.jmtqu4.easypanel.host',
+    'http://flask-mvp.jmtqu4.easypanel.host'
+]
 ALLOWED_HOSTS = ['*']
 
 
