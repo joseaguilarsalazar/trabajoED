@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Shopping Cart{% endblock %}
+
+{% block content %}
+<h2>Your Shopping Cart</h2>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+{% if dishes %}
+    <ul>
+        {% for dish in dishes %}
+            <li>
+                {{ dish.name }} - ${{ dish.price }}
+                <form method="post" style="display:inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="remove_dish_id" value="{{ dish.id }}">
+                    <button type="submit" style="background-color: red;">Remove</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <p>Total Price: ${{ total_price }}</p>
+    <a href="{% url 'dishes_list' %}">Add more dishes</a>
+    <a href= "{% url 'checkout_view' %}">Proceed to Checkout</a>
+{% else %}
+    <p>Your cart is empty.</p>
+    <a href="{% url 'dishes_list' %}">Browse Dishes</a>
+{% endif %}
+{% endblock %}

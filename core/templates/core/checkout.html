@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Checkout{% endblock %}
+
+{% block content %}
+<h2>Checkout</h2>
+
+<ul>
+    {% for dish in dishes %}
+        <li>{{ dish.name }} - ${{ dish.price }}</li>
+    {% endfor %}
+</ul>
+<p>Total Price: ${{ total_price }}</p>
+
+<form method="post" action="{% url 'payment_view' %}">
+    {% csrf_token %}
+    <button type="submit">Proceed to Payment</button>
+</form>
+<a href="{% url 'cart_view' %}">Back to Cart</a>
+{% endblock %}

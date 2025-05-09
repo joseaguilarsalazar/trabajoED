@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Payment{% endblock %}
+
+{% block content %}
+<h2>Payment</h2>
+<p>Total Amount: ${{ total_price }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirm Payment</button>
+</form>
+<a href="{% url 'checkout_view' %}">Back to Checkout</a>
+{% endblock %}

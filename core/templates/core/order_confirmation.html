@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block title %}Order Confirmation{% endblock %}
+
+{% block content %}
+<h2>Order Confirmed</h2>
+<p>Thank you for your purchase! Your order has been successfully placed.</p>
+<a href="{% url 'dishes_list' %}">Back to Dishes</a>
+{% endblock %}

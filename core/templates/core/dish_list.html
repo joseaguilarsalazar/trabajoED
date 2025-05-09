@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Available Dishes{% endblock %}
+
+{% block content %}
+<h2>Available Dishes</h2>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="message {% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+<div class="dishes-list">
+    {% for dish in dishes %}
+        <div class="dish-card">
+            <h3>{{ dish.name }}</h3>
+            <p>{{ dish.description }}</p>
+            <p>Price: ${{ dish.price }}</p>
+            {% if dish.image %}
+                <img src="{{ dish.image.url }}" alt="{{ dish.name }}" width="150">
+            {% endif %}
+            <form method="post" style="margin-top: 10px;">
+                {% csrf_token %}
+                <input type="hidden" name="dish_id" value="{{ dish.id }}">
+                <button type="submit">Add to Cart</button>
+            </form>
+        </div>
+    {% empty %}
+        <p>No dishes available at the moment.</p>
+    {% endfor %}
+</div>
+{% endblock %}
